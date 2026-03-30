@@ -464,15 +464,17 @@ async function apiPost(payload){
 }
 
 async function cargarDatos(){
-  setSyncStatus('loading','Cargando...');
-  const res = await apiPost({accion:'leer'});
-  if(res && res.datos && Object.keys(res.datos).length > 0){
-    D = {...D, ...res.datos};
-    svLocal();
-    renderTodo();
-  } else {
-    renderTodo();
-    if(!res) setSyncStatus('err','Sin conexión — datos locales');
+  setSyncStatus('loading','Sync...');
+  // No bloqueamos UI — trabajamos en segundo plano
+  try {
+    const res = await apiPost({accion:'leer'});
+    if(res && res.datos && Object.keys(res.datos).length > 0){
+      D = {...D, ...res.datos};
+      svLocal();
+      renderTodo();
+    }
+  } catch(e) {
+    setSyncStatus('err','Sin conexión');
   }
 }
 
@@ -825,11 +827,11 @@ function renderTodo(){
 
 // ══ INIT ══
 ['ali-f','ev-fecha','mov-f','med-f','lec-f','c-cub','c-part'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=hoy();});
-// Mostrar datos locales inmediatamente sin esperar la red
+// PRIMERO mostrar — NUNCA bloquear UI
 renderTodo();
-setSyncStatus('ok','Datos locales listos');
-// Sincronizar en segundo plano despues de 2 segundos
-setTimeout(()=>{ cargarDatos(); }, 2000);
+setSyncStatus('ok','Listo ✅');
+// Sync silencioso después de 3 segundos
+setTimeout(()=>{ cargarDatos(); }, 3000);
 </script>
 </body>
 </html>
