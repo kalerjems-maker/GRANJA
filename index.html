@@ -825,12 +825,11 @@ function renderTodo(){
 
 // ══ INIT ══
 ['ali-f','ev-fecha','mov-f','med-f','lec-f','c-cub','c-part'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=hoy();});
-document.getElementById('hoy-badge')&&(document.getElementById('hoy-badge').textContent=new Date().toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}));
+// Mostrar datos locales inmediatamente sin esperar la red
 renderTodo();
-
-// El script en Google necesita manejar JSONP - actualizar Apps Script
-// Por ahora actualizar el script en Google Sheets para soportar callback
-cargarDatos();
+setSyncStatus('ok','Datos locales listos');
+// Sincronizar en segundo plano despues de 2 segundos
+setTimeout(()=>{ cargarDatos(); }, 2000);
 </script>
 </body>
 </html>
