@@ -6,7 +6,7 @@
 <title>Granja — Control de Cerdas</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
-:root{--bg:#111810;--surf:#18201a;--card:#1e2a20;--brd:#2c3e2e;--brd2:#384a3a;--g:#5ddb7c;--g2:#3aaf56;--y:#f0c040;--o:#f07830;--r:#e84a4a;--pk:#ff8fb0;--bl:#5ab4f0;--tx:#dff0e0;--mu:#6a8a6c;--mu2:#4a6a4c}
+:root{--bg:#111810;--surf:#18201a;--card:#1e2a20;--brd:#2c3e2e;--brd2:#384a3a;--g:#5ddb7c;--g2:#3aaf56;--y:#f0c040;--o:#f07830;--r:#e84a4a;--pk:#ff8fb0;--bl:#5ab4f0;--tx:#dff0e0;--mu:#6a8a6c}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:90px}
 header{background:var(--surf);border-bottom:1px solid var(--brd);padding:13px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
@@ -16,7 +16,7 @@ header{background:var(--surf);border-bottom:1px solid var(--brd);padding:13px 16
 .sync-dot.ok{background:var(--g)}.sync-dot.err{background:var(--r)}.sync-dot.loading{background:var(--y);animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .nav{display:flex;overflow-x:auto;scrollbar-width:none;background:var(--surf);border-bottom:1px solid var(--brd)}
-.nb{flex-shrink:0;padding:10px 13px;background:none;border:none;border-bottom:2px solid transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;cursor:pointer;transition:all .18s;white-space:nowrap}
+.nb{flex-shrink:0;padding:10px 13px;background:none;border:none;border-bottom:2px solid transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:500;cursor:pointer;white-space:nowrap}
 .nb.on{color:var(--g);border-bottom-color:var(--g)}
 .page{display:none;padding:13px}.page.on{display:block}
 .card{background:var(--card);border:1px solid var(--brd);border-radius:11px;padding:14px;margin-bottom:11px}
@@ -32,18 +32,15 @@ label:first-child{margin-top:0}
 input,select{width:100%;background:var(--surf);border:1px solid var(--brd);color:var(--tx);padding:8px 10px;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.86rem}
 input:focus,select:focus{outline:none;border-color:var(--g)}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.btn{padding:10px 16px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;width:100%;margin-top:9px}
-.btn:active{transform:scale(.97)}
+.btn{padding:10px 16px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer;width:100%;margin-top:9px}
 .btn-g{background:var(--g);color:#0e1a10}
 .btn-o{background:transparent;border:1px solid var(--o);color:var(--o)}
-.btn-r{background:transparent;border:1px solid var(--r);color:var(--r)}
 .btn-b{background:transparent;border:1px solid var(--bl);color:var(--bl)}
 .chip{display:inline-block;font-size:.62rem;padding:2px 7px;border-radius:10px;font-weight:600}
 .chip-g{background:#0e2e18;color:var(--g);border:1px solid var(--g2)}
 .chip-y{background:#2a2010;color:var(--y);border:1px solid #806030}
 .chip-o{background:#2a1808;color:var(--o);border:1px solid #804020}
 .chip-pk{background:#2a1020;color:var(--pk);border:1px solid #804060}
-.chip-bl{background:#0a1e2e;color:var(--bl);border:1px solid #2a5a7a}
 .ac{background:var(--surf);border:1px solid var(--brd);border-radius:10px;padding:12px;margin-bottom:8px}
 .at{display:flex;justify-content:space-between;align-items:flex-start}
 .an{font-family:'Fraunces',serif;font-size:1rem;font-weight:700}
@@ -53,12 +50,12 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 .pl{font-size:.66rem;color:var(--mu);margin-top:2px}
 .mb-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .mb{padding:5px 9px;border-radius:5px;border:none;font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:600;cursor:pointer}
-.mb-g{background:#0e2e18;color:var(--g)}.mb-o{background:#2a1808;color:var(--o)}.mb-r{background:#2a0a0a;color:var(--r)}.mb-b{background:#0a1e2e;color:var(--bl)}.mb-p{background:#2a1020;color:var(--pk)}.mb-y{background:#2a2010;color:var(--y)}
+.mb-g{background:#0e2e18;color:var(--g)}.mb-o{background:#2a1808;color:var(--o)}.mb-r{background:#2a0a0a;color:var(--r)}.mb-b{background:#0a1e2e;color:var(--bl)}.mb-y{background:#2a2010;color:var(--y)}
 .al-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--brd);font-size:.81rem}
 .al-row:last-child{border-bottom:none}
 .alv{font-weight:600}
 .ri{background:var(--surf);border-left:3px solid var(--g);border-radius:0 7px 7px 0;padding:8px 10px;margin-bottom:6px;font-size:.78rem}
-.ri.ev-venta{border-left-color:var(--y)}.ri.ev-medicamento{border-left-color:var(--bl)}.ri.ev-parto{border-left-color:var(--pk)}
+.ri.ev-venta{border-left-color:var(--y)}.ri.ev-parto{border-left-color:var(--pk)}.ri.ev-medicamento{border-left-color:var(--bl)}
 .rm{color:var(--mu);font-size:.68rem;margin-top:2px}
 .tb{background:linear-gradient(135deg,#0e2018,#0a1a12);border:1px solid var(--g2);border-radius:11px;padding:16px;text-align:center;margin-bottom:13px}
 .tn{font-family:'Fraunces',serif;font-size:2.1rem;font-weight:900;color:var(--g)}
@@ -82,7 +79,6 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 .aiv{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--g);background:#0e2018;border:1px solid var(--g2);padding:2px 6px;border-radius:4px;white-space:nowrap;flex-shrink:0}
 .alrt{border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:.79rem;display:flex;align-items:flex-start;gap:7px}
 .alrt-r{background:#2a0808;border:1px solid var(--r)}
-.alrt-y{background:#2a2000;border:1px solid var(--y)}
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;align-items:flex-end}
 .mo.on{display:flex}
 .mb-box{background:var(--card);border-radius:15px 15px 0 0;border-top:1px solid var(--brd2);padding:18px 16px;width:100%;max-height:88vh;overflow-y:auto}
@@ -91,11 +87,6 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 .mc{background:none;border:none;color:var(--mu);font-size:1.2rem;cursor:pointer}
 .empty{text-align:center;color:var(--mu);padding:26px 0;font-size:.8rem}
 .med-i{background:var(--surf);border-left:3px solid var(--bl);border-radius:0 7px 7px 0;padding:8px 10px;margin-bottom:6px;font-size:.78rem}
-.med-m{color:var(--mu);font-size:.68rem;margin-top:2px}
-.setup-box{background:linear-gradient(135deg,#0a1e2e,#0a1a12);border:1px solid var(--bl);border-radius:12px;padding:20px;margin-bottom:14px}
-.setup-title{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--bl);margin-bottom:8px}
-.setup-step{font-size:.8rem;color:var(--tx);margin-bottom:6px;padding-left:4px;line-height:1.5}
-.setup-step span{color:var(--y);font-weight:600}
 .sync-bar{background:var(--surf);border:1px solid var(--brd);border-radius:8px;padding:10px 12px;margin-bottom:11px;display:flex;align-items:center;gap:10px;font-size:.78rem}
 .sync-txt{flex:1;color:var(--mu)}
 </style>
@@ -105,7 +96,7 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
   <div class="logo">🐷 <div><span>Granja</span><span class="logo-s">Control compartido</span></div></div>
   <div style="display:flex;align-items:center;gap:8px">
     <div class="sync-dot" id="sync-dot"></div>
-    <div style="font-family:'DM Mono',monospace;font-size:.68rem;color:var(--mu)" id="sync-label">sin sync</div>
+    <div style="font-family:'DM Mono',monospace;font-size:.68rem;color:var(--mu)" id="sync-label">cargando...</div>
   </div>
 </header>
 <nav class="nav">
@@ -124,7 +115,7 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 <div id="page-resumen" class="page on">
   <div class="sync-bar">
     <div class="sync-dot" id="sync-dot2"></div>
-    <div class="sync-txt" id="sync-info">Cargando datos...</div>
+    <div class="sync-txt" id="sync-info">Iniciando...</div>
     <button class="mb mb-b" onclick="cargarDatos()">🔄 Sync</button>
   </div>
   <div class="sg">
@@ -155,7 +146,7 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 <!-- CERDAS -->
 <div id="page-cerdas" class="page">
   <button class="btn btn-g" style="margin-bottom:11px" onclick="openMo('mo-cerda')">+ Nueva cerda</button>
-  <div id="lista-cerdas"><div class="empty">Cargando...</div></div>
+  <div id="lista-cerdas"><div class="empty">Sin cerdas registradas.</div></div>
 </div>
 
 <!-- LECHONES -->
@@ -168,7 +159,7 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
     <div class="al-row"><span>En ceba</span><span class="alv o" id="l-ceb">0</span></div>
     <div class="al-row" style="font-weight:700"><span>Total vivos</span><span class="alv g" id="l-tot">0</span></div>
   </div>
-  <div id="lista-lechones"><div class="empty">Cargando...</div></div>
+  <div id="lista-lechones"><div class="empty">Sin camadas.</div></div>
 </div>
 
 <!-- ALIMENTO -->
@@ -176,7 +167,7 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
   <div class="card">
     <div class="ch">⚙️ Raciones kg/animal/día</div>
     <label>Cerda preñada (días 1–90)</label><input type="number" id="ra-p1" value="2.0" step="0.1" onchange="saveRac()">
-    <label>Cerda preñada (días 90–114)</label><input type="number" id="ra-p2" value="2.5" step="0.1" onchange="saveRac()">
+    <label>Cerda preñada preparto (días 90–114)</label><input type="number" id="ra-p2" value="2.5" step="0.1" onchange="saveRac()">
     <label>Cerda parida / lactante</label><input type="number" id="ra-pa" value="5.5" step="0.1" onchange="saveRac()">
     <label>Cerda en seba</label><input type="number" id="ra-se" value="3.5" step="0.1" onchange="saveRac()">
     <label>Lechón en destete (por cabeza)</label><input type="number" id="ra-le" value="0.5" step="0.05" onchange="saveRac()">
@@ -186,21 +177,21 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
     <div class="ch">📦 Registrar compra</div>
     <div class="r2">
       <div><label>Fecha</label><input type="date" id="ali-f"></div>
-      <div><label>Kg comprados</label><input type="number" id="ali-k" placeholder="50"></div>
+      <div><label>Kg</label><input type="number" id="ali-k" placeholder="50"></div>
     </div>
-    <label>Costo total ($)</label><input type="number" id="ali-c" placeholder="100000">
-    <label>Proveedor / tipo</label><input type="text" id="ali-n" placeholder="Solla, Italcol...">
-    <button class="btn btn-g" onclick="comprarAli()">Guardar compra</button>
+    <label>Costo ($)</label><input type="number" id="ali-c" placeholder="100000">
+    <label>Proveedor</label><input type="text" id="ali-n" placeholder="Solla, Italcol...">
+    <button class="btn btn-g" onclick="comprarAli()">Guardar</button>
   </div>
   <div class="card">
-    <div class="ch">📋 Historial compras</div>
+    <div class="ch">📋 Historial</div>
     <div id="hist-ali"><div class="empty">Sin registros</div></div>
   </div>
 </div>
 
 <!-- GUÍA -->
 <div id="page-guia" class="page">
-  <div class="tip">📖 Guía práctica — qué darle a cada animal, cuánto y cuándo.</div>
+  <div class="tip">📖 Guía práctica de alimentación porcina.</div>
   <div class="gt">
     <button class="gb on" onclick="gtab('g-pre',this)">🐷 Preñada</button>
     <button class="gb" onclick="gtab('g-par',this)">🍼 Parida</button>
@@ -209,81 +200,59 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
     <button class="gb" onclick="gtab('g-pro',this)">🚫 Prohibido</button>
   </div>
   <div id="g-pre" class="gs on">
-    <div class="ae"><div class="aet">📅 Días 1 a 90 — Gestación temprana</div><div class="aes">Mantener condición corporal, no engordar demasiado</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado de gestación</strong><span>Proteína 14-16%, Energía 3.100 kcal/kg</span></div><div class="aiv">1.8–2.2 kg/día</div></div>
-      <div class="ai"><div class="aic">🌽</div><div class="ait"><strong>Maíz amarillo partido</strong><span>Energía barata, máx 30% de la ración</span></div><div class="aiv">hasta 30%</div></div>
-      <div class="ai"><div class="aic">🫘</div><div class="ait"><strong>Torta de soya</strong><span>Aumenta proteína si el concentrado es básico</span></div><div class="aiv">100–200 g</div></div>
-      <div class="ai"><div class="aic">🌿</div><div class="ait"><strong>Bore, morera o pasto fresco</strong><span>Fibra, saciedad, minerales</span></div><div class="aiv">1–2 kg/día</div></div>
-      <div class="ai"><div class="aic">🧂</div><div class="ait"><strong>Sal mineralizada</strong><span>Ca, P, Zn, Se. Siempre.</span></div><div class="aiv">10–15 g/día</div></div>
-      <div class="ai"><div class="aic">💧</div><div class="ait"><strong>Agua limpia</strong><span>Mínimo 10 litros/día</span></div><div class="aiv">10+ L/día</div></div>
+    <div class="ae"><div class="aet">📅 Días 1 a 90</div><div class="aes">Mantener condición corporal</div>
+      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado gestación</strong><span>Proteína 14-16%</span></div><div class="aiv">1.8–2.2 kg/día</div></div>
+      <div class="ai"><div class="aic">🌽</div><div class="ait"><strong>Maíz partido</strong><span>Máx 30% de la ración</span></div><div class="aiv">hasta 30%</div></div>
+      <div class="ai"><div class="aic">🌿</div><div class="ait"><strong>Bore o morera</strong><span>Fibra y saciedad</span></div><div class="aiv">1–2 kg/día</div></div>
+      <div class="ai"><div class="aic">🧂</div><div class="ait"><strong>Sal mineralizada</strong><span>Siempre</span></div><div class="aiv">10–15 g/día</div></div>
+      <div class="ai"><div class="aic">💧</div><div class="ait"><strong>Agua limpia</strong><span>Siempre disponible</span></div><div class="aiv">10+ L/día</div></div>
     </div>
-    <div class="ae"><div class="aet">📅 Días 90 a 114 — Preparto</div><div class="aes">Aumentar ración y cambiar a concentrado de lactancia</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado de lactancia (cambiar ya)</strong><span>Proteína 16-18%. Cambiar paulatinamente en 5 días.</span></div><div class="aiv">2.5–3.0 kg/día</div></div>
-      <div class="ai"><div class="aic">🌻</div><div class="ait"><strong>Aceite vegetal</strong><span>Mejora calidad del calostro</span></div><div class="aiv">50–100 ml/día</div></div>
-      <div class="ai"><div class="aic">🩺</div><div class="ait"><strong>3 días antes del parto</strong><span>Reducir a 1.5 kg/día — evita estreñimiento</span></div><div class="aiv">1.5 kg/día</div></div>
+    <div class="ae"><div class="aet">📅 Días 90 a 114 — Preparto</div><div class="aes">Cambiar a lactancia, aumentar ración</div>
+      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado lactancia</strong><span>Proteína 16-18%. Cambiar en 5 días.</span></div><div class="aiv">2.5–3.0 kg/día</div></div>
+      <div class="ai"><div class="aic">🩺</div><div class="ait"><strong>3 días antes del parto</strong><span>Reducir para evitar estreñimiento</span></div><div class="aiv">1.5 kg/día</div></div>
     </div>
-    <div class="tip">✅ Suero de leche (si tiene): excelente proteína barata. Hasta 3 litros/día.</div>
-    <div class="tip w">⚠️ No dar residuos fermentados ni yuca cruda en exceso a cerdas preñadas.</div>
+    <div class="tip w">⚠️ No dar residuos fermentados ni yuca cruda en exceso.</div>
   </div>
   <div id="g-par" class="gs">
-    <div class="ae"><div class="aet">🍼 Primeros 3 días post-parto</div><div class="aes">Aumentar ración despacio — aparato digestivo sensible</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado de lactancia</strong><span>No más de 2 kg el día 1. Subir 0.5 kg cada día.</span></div><div class="aiv">1–2 kg día 1</div></div>
-      <div class="ai"><div class="aic">🥕</div><div class="ait"><strong>Panela o melaza en agua tibia</strong><span>Recupera energía post-parto. 200–300 g disueltos.</span></div><div class="aiv">1 vez/día</div></div>
-      <div class="ai"><div class="aic">💧</div><div class="ait"><strong>Agua + electrolitos</strong><span>Mínimo 15–20 L. Sin agua la leche baja.</span></div><div class="aiv">15–20 L/día</div></div>
-    </div>
-    <div class="ae"><div class="aet">🍼 Días 4 al destete (~28 días)</div><div class="aes">Producción máxima de leche — no racionar</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado lactancia alta proteína</strong><span>Proteína 18%+. No escatimar.</span></div><div class="aiv">5–7 kg/día</div></div>
-      <div class="ai"><div class="aic">🌽</div><div class="ait"><strong>Maíz partido o arroz</strong><span>Energía extra. No reemplaza el concentrado.</span></div><div class="aiv">500 g–1 kg</div></div>
+    <div class="ae"><div class="aet">🍼 Días 4 al destete</div><div class="aes">No racionar — produce leche para ella y los lechones</div>
+      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado lactancia 18%+</strong><span>Base principal. No escatimar.</span></div><div class="aiv">5–7 kg/día</div></div>
       <div class="ai"><div class="aic">🫘</div><div class="ait"><strong>Torta de soya cocida</strong><span>Aumenta producción de leche</span></div><div class="aiv">300–500 g/día</div></div>
-      <div class="ai"><div class="aic">🌿</div><div class="ait"><strong>Bore o morera picada</strong><span>Minerales y la cerda lo come con gusto</span></div><div class="aiv">2–3 kg/día</div></div>
-      <div class="ai"><div class="aic">🧂</div><div class="ait"><strong>Sal mineralizada con calcio</strong><span>Sin calcio la cerda pierde masa ósea</span></div><div class="aiv">15–20 g/día</div></div>
-      <div class="ai"><div class="aic">💧</div><div class="ait"><strong>Agua SIEMPRE</strong><span>20–25 L/día mínimo</span></div><div class="aiv">20–25 L/día</div></div>
+      <div class="ai"><div class="aic">🌿</div><div class="ait"><strong>Bore o morera</strong><span>Minerales</span></div><div class="aiv">2–3 kg/día</div></div>
+      <div class="ai"><div class="aic">💧</div><div class="ait"><strong>Agua SIEMPRE</strong><span>Sin agua, la leche baja</span></div><div class="aiv">20–25 L/día</div></div>
     </div>
-    <div class="tip">✅ Regla de oro: la cerda come por ella y por sus lechones. Si le racionas, la leche baja.</div>
   </div>
   <div id="g-seb" class="gs">
-    <div class="ae"><div class="aet">⚖️ Levante — 20 a 60 kg</div><div class="aes">Desarrollo muscular y óseo</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado de levante</strong><span>Proteína 18-20%</span></div><div class="aiv">1.5–2.5 kg/día</div></div>
+    <div class="ae"><div class="aet">⚖️ Levante 20–60 kg</div>
+      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado levante 18-20%</strong></div><div class="aiv">1.5–2.5 kg/día</div></div>
       <div class="ai"><div class="aic">🌽</div><div class="ait"><strong>Maíz molido</strong><span>60% maíz + 40% concentrado</span></div><div class="aiv">60% ración</div></div>
-      <div class="ai"><div class="aic">🍠</div><div class="ait"><strong>Yuca cocida o plátano</strong><span>Energía local económica</span></div><div class="aiv">hasta 1 kg/día</div></div>
     </div>
-    <div class="ae"><div class="aet">⚖️ Engorde — 60 kg al sacrificio</div><div class="aes">Ganancia de peso máxima</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado de engorde</strong><span>Proteína 14-16%</span></div><div class="aiv">2.5–3.5 kg/día</div></div>
-      <div class="ai"><div class="aic">🌽</div><div class="ait"><strong>Maíz / yuca / plátano</strong><span>Mezcla económica. 50% maíz funciona bien.</span></div><div class="aiv">1–2 kg/día</div></div>
-      <div class="ai"><div class="aic">🍚</div><div class="ait"><strong>Subproductos de cocina cocidos</strong><span>Solo cocidos, nunca crudos</span></div><div class="aiv">hasta 2 kg/día</div></div>
-      <div class="ai"><div class="aic">🌿</div><div class="ait"><strong>Forraje verde</strong><span>Bore, King grass — reduce costo</span></div><div class="aiv">2–3 kg/día</div></div>
+    <div class="ae"><div class="aet">⚖️ Engorde 60–120 kg</div>
+      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado engorde 14-16%</strong></div><div class="aiv">2.5–3.5 kg/día</div></div>
+      <div class="ai"><div class="aic">🌽</div><div class="ait"><strong>Maíz / yuca / plátano</strong></div><div class="aiv">1–2 kg/día</div></div>
+      <div class="ai"><div class="aic">🌿</div><div class="ait"><strong>Forraje verde</strong><span>Bore, King grass</span></div><div class="aiv">2–3 kg/día</div></div>
     </div>
-    <div class="tip">✅ Fórmula económica: 50% maíz + 30% concentrado + 10% soya + 10% subproductos.</div>
-    <div class="tip w">⚠️ Últimos 15 días: dieta limpia para no afectar sabor de la carne.</div>
+    <div class="tip">✅ Fórmula económica: 50% maíz + 30% concentrado + 10% soya + 10% subproductos cocidos.</div>
   </div>
   <div id="g-lec" class="gs">
-    <div class="ae"><div class="aet">🐽 Nacimiento a día 3</div><div class="aes">Sobrevivencia — lo más crítico</div>
-      <div class="ai"><div class="aic">🍼</div><div class="ait"><strong>Calostro (primera leche)</strong><span>VITAL. Primeras 6 horas. Que cada lechón mame.</span></div><div class="aiv">Ad libitum</div></div>
-      <div class="ai"><div class="aic">🔥</div><div class="ait"><strong>Calor</strong><span>No regulan temperatura. Mínimo 30–32°C en la camada.</span></div><div class="aiv">30–32°C</div></div>
-      <div class="ai"><div class="aic">🩺</div><div class="ait"><strong>Hierro dextrano inyectable</strong><span>1 cc en el día 3. Previene anemia. Obligatorio.</span></div><div class="aiv">Día 3</div></div>
+    <div class="ae"><div class="aet">🐽 Nacimiento — Día 3</div>
+      <div class="ai"><div class="aic">🍼</div><div class="ait"><strong>Calostro</strong><span>VITAL primeras 6 horas. Que cada lechón mame.</span></div><div class="aiv">Ad libitum</div></div>
+      <div class="ai"><div class="aic">🩺</div><div class="ait"><strong>Hierro dextrano</strong><span>1 cc inyectable el día 3. Obligatorio.</span></div><div class="aiv">Día 3</div></div>
     </div>
-    <div class="ae"><div class="aet">🐽 Días 7 a 21 — Preiniciador</div><div class="aes">Leche + empezar sólidos</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado preiniciador</strong><span>Proteína 22-24%, peletizado fino. Libre acceso.</span></div><div class="aiv">Libre acceso</div></div>
-      <div class="ai"><div class="aic">💧</div><div class="ait"><strong>Agua limpia</strong><span>Bebedero a altura de lechones</span></div><div class="aiv">Libre acceso</div></div>
+    <div class="ae"><div class="aet">🐽 Destete — 21 a 60 días</div>
+      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado iniciador 22%</strong><span>Cambiar gradualmente</span></div><div class="aiv">200–500 g/día</div></div>
+      <div class="ai"><div class="aic">🧪</div><div class="ait"><strong>Electrolitos en agua</strong><span>Primera semana post-destete</span></div><div class="aiv">7 días</div></div>
     </div>
-    <div class="ae"><div class="aet">🐽 Destete — 21 a 60 días</div><div class="aes">Etapa más delicada — riesgo de diarrea</div>
-      <div class="ai"><div class="aic">🌾</div><div class="ait"><strong>Concentrado iniciador</strong><span>Proteína 22%. Cambiar gradualmente.</span></div><div class="aiv">200–500 g/día</div></div>
-      <div class="ai"><div class="aic">🧪</div><div class="ait"><strong>Electrolitos en agua</strong><span>Primera semana post-destete. Previene deshidratación.</span></div><div class="aiv">7 días</div></div>
-    </div>
-    <div class="tip">✅ Nunca cambiar alimento de golpe en el destete. Mezclar 3–5 días.</div>
-    <div class="tip w">⚠️ Diarrea amarilla o grisácea = actuar inmediato con electrolitos y veterinario.</div>
+    <div class="tip w">⚠️ Diarrea amarilla = actuar inmediato. Nunca cambiar alimento de golpe.</div>
   </div>
   <div id="g-pro" class="gs">
-    <div class="ae"><div class="aet">🚫 Alimentos prohibidos</div>
-      <div class="ai"><div class="aic">☠️</div><div class="ait"><strong>Aguacate (hojas y semilla)</strong><span>Tóxico — problemas cardíacos y respiratorios</span></div><div class="aiv">NUNCA</div></div>
-      <div class="ai"><div class="aic">☠️</div><div class="ait"><strong>Sal en exceso</strong><span>Más del 2% — envenenamiento y muerte</span></div><div class="aiv">NUNCA</div></div>
-      <div class="ai"><div class="aic">☠️</div><div class="ait"><strong>Alimentos mohosos</strong><span>Aflatoxinas — daño hepático, abortos, muerte</span></div><div class="aiv">NUNCA</div></div>
-      <div class="ai"><div class="aic">⚠️</div><div class="ait"><strong>Carne o vísceras crudas</strong><span>Transmite Aftosa, Peste Porcina. Solo cocidas.</span></div><div class="aiv">Solo cocidas</div></div>
-      <div class="ai"><div class="aic">⚠️</div><div class="ait"><strong>Residuos de cocina crudos</strong><span>Siempre cocinar primero</span></div><div class="aiv">Solo cocidos</div></div>
-      <div class="ai"><div class="aic">⚠️</div><div class="ait"><strong>Yuca cruda en exceso</strong><span>Contiene cianuro. Cocida no hay problema.</span></div><div class="aiv">Cocida OK</div></div>
-      <div class="ai"><div class="aic">⚠️</div><div class="ait"><strong>Agua contaminada</strong><span>Fuente de leptospirosis y diarrea</span></div><div class="aiv">Agua limpia</div></div>
+    <div class="ae"><div class="aet">🚫 Nunca dar estos alimentos</div>
+      <div class="ai"><div class="aic">☠️</div><div class="ait"><strong>Aguacate (hojas/semilla)</strong><span>Tóxico — muerte</span></div><div class="aiv">NUNCA</div></div>
+      <div class="ai"><div class="aic">☠️</div><div class="ait"><strong>Alimentos mohosos</strong><span>Aflatoxinas — abortos y muerte</span></div><div class="aiv">NUNCA</div></div>
+      <div class="ai"><div class="aic">☠️</div><div class="ait"><strong>Sal en exceso</strong><span>Más del 2% — envenenamiento</span></div><div class="aiv">NUNCA</div></div>
+      <div class="ai"><div class="aic">⚠️</div><div class="ait"><strong>Carne/vísceras crudas</strong><span>Solo cocidas</span></div><div class="aiv">Cocidas OK</div></div>
+      <div class="ai"><div class="aic">⚠️</div><div class="ait"><strong>Residuos de cocina crudos</strong><span>Siempre cocinar primero</span></div><div class="aiv">Cocidos OK</div></div>
+      <div class="ai"><div class="aic">⚠️</div><div class="ait"><strong>Yuca cruda en exceso</strong><span>Contiene cianuro. Cocida sí.</span></div><div class="aiv">Cocida OK</div></div>
     </div>
-    <div class="tip">✅ Regla fácil: si no lo comería usted, no se lo dé crudo al cerdo.</div>
   </div>
 </div>
 
@@ -291,12 +260,11 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 <div id="page-medicamentos" class="page">
   <button class="btn btn-g" style="margin-bottom:11px" onclick="openMo('mo-med')">+ Registrar medicamento</button>
   <div class="card">
-    <div class="ch">📋 Calendario básico recomendado</div>
+    <div class="ch">📋 Calendario básico</div>
     <div class="al-row"><span>Hierro dextrano (lechones)</span><span class="alv bl">Día 3 de vida</span></div>
-    <div class="al-row"><span>Desparasitación cerdas</span><span class="alv y">Cada 6 meses</span></div>
+    <div class="al-row"><span>Desparasitación</span><span class="alv y">Cada 6 meses</span></div>
     <div class="al-row"><span>Vacuna Fiebre Aftosa</span><span class="alv r">Cada 4 meses</span></div>
-    <div class="al-row"><span>Vacuna Peste Porcina</span><span class="alv r">Según plan ICA</span></div>
-    <div class="al-row"><span>Vitaminas A, D, E</span><span class="alv g">Al destete y cubrición</span></div>
+    <div class="al-row"><span>Vacuna Peste Porcina</span><span class="alv r">Según ICA</span></div>
   </div>
   <div class="card">
     <div class="ch">📋 Historial</div>
@@ -307,27 +275,25 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 <!-- EVENTOS -->
 <div id="page-eventos" class="page">
   <div class="card">
-    <div class="ch">📝 Registrar evento</div>
-    <label>Animal</label>
-    <select id="ev-animal"><option value="">Seleccionar...</option></select>
-    <label>Tipo de evento</label>
+    <div class="ch">📝 Nuevo evento</div>
+    <label>Animal</label><select id="ev-animal"><option value="">Seleccionar...</option></select>
+    <label>Tipo</label>
     <select id="ev-tipo">
-      <option value="cubricion">💕 Cubrición / Monta</option>
+      <option value="cubricion">💕 Cubrición</option>
       <option value="parto">🐣 Parto</option>
       <option value="destete">🍼 Destete</option>
       <option value="venta">💵 Venta</option>
-      <option value="medicamento">💉 Medicamento / Vacuna</option>
+      <option value="medicamento">💉 Medicamento</option>
       <option value="peso">⚖️ Peso</option>
-      <option value="muerte">💀 Muerte / Pérdida</option>
+      <option value="muerte">💀 Muerte</option>
       <option value="otro">📝 Otro</option>
     </select>
     <div class="r2">
       <div><label>Fecha</label><input type="date" id="ev-fecha"></div>
-      <div><label>Valor $ (si aplica)</label><input type="number" id="ev-valor" placeholder="0"></div>
+      <div><label>Valor $</label><input type="number" id="ev-valor" placeholder="0"></div>
     </div>
-    <label>Detalle / Nota</label>
-    <input type="text" id="ev-det" placeholder="Descripción...">
-    <button class="btn btn-g" onclick="guardarEv()">Guardar evento</button>
+    <label>Detalle</label><input type="text" id="ev-det" placeholder="Descripción...">
+    <button class="btn btn-g" onclick="guardarEv()">Guardar</button>
   </div>
   <div id="lista-eventos"><div class="empty">Sin eventos.</div></div>
 </div>
@@ -340,14 +306,11 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
       <div><label>Tipo</label><select id="mov-tipo"><option value="ingreso">Ingreso</option><option value="gasto">Gasto</option></select></div>
       <div><label>Fecha</label><input type="date" id="mov-f"></div>
     </div>
-    <label>Descripción</label><input type="text" id="mov-desc" placeholder="Ej: Venta 8 lechones">
+    <label>Descripción</label><input type="text" id="mov-desc" placeholder="Venta lechones...">
     <label>Valor ($)</label><input type="number" id="mov-val" placeholder="0">
     <button class="btn btn-g" onclick="guardarMov()">Guardar</button>
   </div>
-  <div class="tb">
-    <div class="tl">Utilidad neta acumulada</div>
-    <div class="tn" id="util-total">$0</div>
-  </div>
+  <div class="tb"><div class="tl">Utilidad neta</div><div class="tn" id="util-total">$0</div></div>
   <div class="card">
     <div class="ch">📑 Movimientos</div>
     <div id="lista-movs"><div class="empty">Sin movimientos</div></div>
@@ -356,29 +319,21 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 
 <!-- CONFIG -->
 <div id="page-config" class="page">
-  <div class="setup-box">
-    <div class="setup-title">☁️ Sincronización con Google Sheets</div>
-    <div class="setup-step">Esta app guarda los datos en su Google Sheets. Tanto usted como su esposa ven los mismos datos en tiempo real.</div>
-    <div style="margin-top:12px">
-      <div class="setup-step"><span>Estado:</span> <span id="cfg-estado" class="g">Configurado ✅</span></div>
-      <div class="setup-step"><span>Hoja:</span> granja_datos</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="ch">⚙️ URL del Script (no cambiar)</div>
-    <div style="font-size:.72rem;color:var(--mu);word-break:break-all;padding:8px;background:var(--surf);border-radius:6px;border:1px solid var(--brd)" id="cfg-url-show">No configurado</div>
-    <label style="margin-top:12px">¿Tiene una URL nueva del script? Péguela aquí:</label>
+  <div class="card" style="background:linear-gradient(135deg,#0a1e2e,#0a1a12);border-color:var(--bl)">
+    <div class="ch" style="color:var(--bl)">☁️ Sincronización Google Sheets</div>
+    <div style="font-size:.8rem;margin-bottom:12px;line-height:1.6">Estado: <span id="cfg-estado" class="g">Configurado ✅</span></div>
+    <div style="font-size:.72rem;color:var(--mu);word-break:break-all;padding:8px;background:var(--surf);border-radius:6px;border:1px solid var(--brd);margin-bottom:10px" id="cfg-url-show"></div>
+    <label>URL nueva del script:</label>
     <input type="text" id="cfg-url-input" placeholder="https://script.google.com/macros/s/...">
-    <button class="btn btn-b" onclick="guardarScriptUrl()">Guardar URL del script</button>
+    <button class="btn btn-b" onclick="guardarScriptUrl()">Guardar URL</button>
   </div>
   <div class="card">
     <div class="ch">🔄 Sincronización manual</div>
-    <button class="btn btn-g" onclick="cargarDatos()">⬇️ Recargar datos del servidor</button>
+    <button class="btn btn-g" onclick="cargarDatos()">⬇️ Recargar del servidor</button>
     <button class="btn btn-o" style="margin-top:8px" onclick="subirTodo()">⬆️ Subir todos mis datos</button>
   </div>
   <div class="card">
     <div class="ch">💾 Respaldo local</div>
-    <div style="font-size:.78rem;color:var(--mu);margin-bottom:10px">Descarga una copia de seguridad de todos sus datos.</div>
     <div class="r2">
       <button class="btn btn-g" style="margin-top:0" onclick="exportarDatos()">⬇️ Exportar</button>
       <button class="btn btn-o" style="margin-top:0" onclick="importarDatos()">⬆️ Importar</button>
@@ -390,39 +345,34 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 <div class="mo" id="mo-cerda">
   <div class="mb-box">
     <div class="mh"><div class="mt">🐷 Nueva cerda</div><button class="mc" onclick="closeMo('mo-cerda')">✕</button></div>
-    <label>Nombre / # de arete</label><input type="text" id="c-nom" placeholder="Ej: Cerda 01">
+    <label>Nombre / # arete</label><input type="text" id="c-nom" placeholder="Cerda 01">
     <label>Tipo</label>
     <select id="c-tipo" onchange="toggleCT()">
-      <option value="prenada">Preñada</option>
-      <option value="seba">En seba</option>
-      <option value="parida">Parida</option>
+      <option value="prenada">Preñada</option><option value="seba">En seba</option><option value="parida">Parida</option>
     </select>
-    <div id="c-blk-pre">
-      <label>Fecha de cubrición</label><input type="date" id="c-cub">
-    </div>
+    <div id="c-blk-pre"><label>Fecha cubrición</label><input type="date" id="c-cub"></div>
     <div id="c-blk-seb" style="display:none">
       <label>Peso actual (kg)</label><input type="number" id="c-peso" placeholder="80">
       <label>Peso objetivo (kg)</label><input type="number" id="c-pobj" placeholder="120">
     </div>
     <div id="c-blk-par" style="display:none">
-      <label>Fecha de parto</label><input type="date" id="c-part">
-      <label>N° de lechones nacidos</label><input type="number" id="c-lech" placeholder="10">
+      <label>Fecha parto</label><input type="date" id="c-part">
+      <label>N° lechones</label><input type="number" id="c-lech" placeholder="10">
     </div>
-    <label>N° de partos anteriores</label><input type="number" id="c-partos" placeholder="0" value="0">
-    <label>Raza (opcional)</label><input type="text" id="c-raza" placeholder="Landrace, Yorkshire...">
+    <label>N° partos anteriores</label><input type="number" id="c-partos" value="0" placeholder="0">
+    <label>Raza</label><input type="text" id="c-raza" placeholder="Landrace, Yorkshire...">
     <label>Nota</label><input type="text" id="c-nota" placeholder="">
-    <button class="btn btn-g" onclick="guardarCerda()">Guardar cerda</button>
+    <button class="btn btn-g" onclick="guardarCerda()">Guardar</button>
   </div>
 </div>
 
 <div class="mo" id="mo-lechon">
   <div class="mb-box">
     <div class="mh"><div class="mt">🐽 Registrar camada</div><button class="mc" onclick="closeMo('mo-lechon')">✕</button></div>
-    <label>Cerda madre</label>
-    <select id="lec-madre"><option value="">Seleccionar...</option></select>
-    <label>Fecha de nacimiento</label><input type="date" id="lec-f">
-    <label>N° nacidos vivos</label><input type="number" id="lec-viv" placeholder="10">
-    <label>N° nacidos muertos</label><input type="number" id="lec-mue" placeholder="0">
+    <label>Madre</label><select id="lec-madre"><option value="">Seleccionar...</option></select>
+    <label>Fecha nacimiento</label><input type="date" id="lec-f">
+    <label>Nacidos vivos</label><input type="number" id="lec-viv" placeholder="10">
+    <label>Nacidos muertos</label><input type="number" id="lec-mue" placeholder="0">
     <label>Estado</label>
     <select id="lec-est">
       <option value="lactancia">En lactancia</option>
@@ -430,16 +380,15 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
       <option value="ceba">En ceba</option>
     </select>
     <label>Nota</label><input type="text" id="lec-nota" placeholder="">
-    <button class="btn btn-g" onclick="guardarLechon()">Guardar camada</button>
+    <button class="btn btn-g" onclick="guardarLechon()">Guardar</button>
   </div>
 </div>
 
 <div class="mo" id="mo-med">
   <div class="mb-box">
-    <div class="mh"><div class="mt">💉 Medicamento / Vacuna</div><button class="mc" onclick="closeMo('mo-med')">✕</button></div>
-    <label>Animal / Grupo</label>
-    <select id="med-animal"><option value="todos">Todos</option></select>
-    <label>Medicamento / Vacuna</label><input type="text" id="med-nom" placeholder="Ivermectina, Vacuna Aftosa...">
+    <div class="mh"><div class="mt">💉 Medicamento</div><button class="mc" onclick="closeMo('mo-med')">✕</button></div>
+    <label>Animal</label><select id="med-animal"><option value="todos">Todos</option></select>
+    <label>Medicamento / Vacuna</label><input type="text" id="med-nom" placeholder="Ivermectina...">
     <label>Dosis</label><input type="text" id="med-dos" placeholder="1 cc por animal">
     <div class="r2">
       <div><label>Fecha</label><input type="date" id="med-f"></div>
@@ -451,102 +400,103 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 </div>
 
 <script>
-// ══════════════════════════════════════════
-// CONFIGURACIÓN — URL del Google Apps Script
-// ══════════════════════════════════════════
-const SHEET_ID = '12OmifTUrStOV9AE9W580ZmDZN8ccVZ8RlScPmVqANyE';
-let SCRIPT_URL = localStorage.getItem('granja_script_url') || '';
+// ══ SCRIPT URL — ya configurada ══
+const SCRIPT_URL_DEFAULT = 'https://script.google.com/macros/s/AKfycbw8DQ0A93DLNA321VzVWvKYOGN5Mx5Q7RWfUomRlebtc3b_FaYDUOj72SVVJrbc8T2T/exec';
+let SCRIPT_URL = localStorage.getItem('granja_script_url') || SCRIPT_URL_DEFAULT;
 
-// ══ DATA LOCAL (caché) ══
+// ══ DATA ══
 let D = JSON.parse(localStorage.getItem('granja_cache') || JSON.stringify({
   cerdas:[],camadas:[],eventos:[],compras:[],meds:[],movs:[],
   rac:{p1:2.0,p2:2.5,pa:5.5,se:3.5,le:0.5,pr:2000}
 }));
-
 function svLocal(){localStorage.setItem('granja_cache',JSON.stringify(D));}
 
-// ══ SYNC STATUS ══
-function setSyncStatus(estado, texto){
+// ══ SYNC via JSONP ══
+function setSyncStatus(est,txt){
   ['sync-dot','sync-dot2'].forEach(id=>{
     const el=document.getElementById(id);
-    el.className='sync-dot '+(estado==='ok'?'ok':estado==='err'?'err':'loading');
+    if(el)el.className='sync-dot '+(est==='ok'?'ok':est==='err'?'err':'loading');
   });
   const info=document.getElementById('sync-info');
-  if(info)info.textContent=texto;
+  if(info)info.textContent=txt;
   const lbl=document.getElementById('sync-label');
-  if(lbl)lbl.textContent=estado==='ok'?'sync ok':estado==='err'?'sin conexión':'sincronizando...';
+  if(lbl)lbl.textContent=est==='ok'?'sync ✅':est==='err'?'offline':'syncing...';
 }
 
-// ══ GOOGLE SHEETS via Apps Script ══
-async function apiCall(accion, payload={}){
-  if(!SCRIPT_URL){
-    setSyncStatus('err','Sin URL del script configurada');
-    return null;
-  }
-  try{
-    setSyncStatus('loading','Sincronizando...');
-    const resp = await fetch(SCRIPT_URL, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({accion, ...payload})
-    });
-    const data = await resp.json();
-    if(data.ok){
-      setSyncStatus('ok','Última sync: '+new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'}));
-      return data;
-    } else {
-      setSyncStatus('err','Error: '+( data.error||'desconocido'));
-      return null;
+function jsonpCall(params, callback){
+  const cbName = 'cb_'+Date.now();
+  const script = document.createElement('script');
+  const url = SCRIPT_URL + '?callback=' + cbName + '&data=' + encodeURIComponent(JSON.stringify(params));
+  window[cbName] = function(data){
+    delete window[cbName];
+    document.body.removeChild(script);
+    callback(data);
+  };
+  script.onerror = function(){
+    delete window[cbName];
+    try{document.body.removeChild(script);}catch(e){}
+    callback(null);
+  };
+  setTimeout(()=>{
+    if(window[cbName]){
+      delete window[cbName];
+      try{document.body.removeChild(script);}catch(e){}
+      callback(null);
     }
-  } catch(e){
-    setSyncStatus('err','Sin internet — modo offline');
-    return null;
-  }
+  }, 8000);
+  script.src = url;
+  document.body.appendChild(script);
+}
+
+async function apiPost(payload){
+  setSyncStatus('loading','Sincronizando...');
+  return new Promise(resolve=>{
+    jsonpCall(payload, data=>{
+      if(data && data.ok){
+        setSyncStatus('ok','Sync: '+new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'}));
+        resolve(data);
+      } else {
+        setSyncStatus('err','Sin conexión — guardado local');
+        resolve(null);
+      }
+    });
+  });
 }
 
 async function cargarDatos(){
-  const res = await apiCall('leer');
-  if(res && res.datos){
+  setSyncStatus('loading','Cargando...');
+  const res = await apiPost({accion:'leer'});
+  if(res && res.datos && Object.keys(res.datos).length > 0){
     D = {...D, ...res.datos};
     svLocal();
     renderTodo();
-    setSyncStatus('ok','Datos actualizados ✅');
   } else {
-    // usar caché local
     renderTodo();
-    setSyncStatus('err','Usando datos locales (sin internet)');
+    if(!res) setSyncStatus('err','Sin conexión — datos locales');
   }
 }
 
 async function guardarEnSheets(tipo, item){
-  const res = await apiCall('guardar', {tipo, item});
-  if(!res){
-    // guardar solo local
-    svLocal();
-    setSyncStatus('err','Guardado solo local — sin internet');
-  }
-}
-
-async function eliminarEnSheets(tipo, id){
-  const res = await apiCall('eliminar', {tipo, id});
-  if(!res) svLocal();
+  await apiPost({accion:'guardar', tipo, item});
+  svLocal();
 }
 
 async function subirTodo(){
-  const res = await apiCall('subirTodo', {datos: D});
-  if(res) alert('✅ Todos los datos subidos a Google Sheets');
-  else alert('❌ Error subiendo. Verifique su conexión.');
+  setSyncStatus('loading','Subiendo...');
+  const res = await apiPost({accion:'subirTodo', datos:D});
+  if(res) alert('✅ Datos subidos a Google Sheets');
+  else alert('❌ Sin conexión. Intente de nuevo.');
 }
 
-// ══ NAVEGACIÓN ══
+// ══ NAV ══
 function go(tab,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   document.getElementById('page-'+tab).classList.add('on');
   btn.classList.add('on');
   const fns={resumen:renderResumen,cerdas:renderCerdas,lechones:renderLechones,
-    alimento:renderAlimento,medicamentos:renderMeds,eventos:renderEventos,cuentas:renderCuentas,
-    config:renderConfig};
+    alimento:renderAlimento,medicamentos:renderMeds,eventos:renderEventos,
+    cuentas:renderCuentas,config:renderConfig};
   if(fns[tab])fns[tab]();
   syncSelects();
 }
@@ -570,97 +520,69 @@ function hoy(){return new Date().toISOString().split('T')[0];}
 function fmt(n){return '$'+Math.round(n||0).toLocaleString('es-CO');}
 function diasDe(d){return d?Math.floor((new Date()-new Date(d))/86400000):0;}
 function syncSelects(){
-  const opts='<option value="">Seleccionar...</option>'+D.cerdas.map(c=>`<option value="${c.id}">${c.nom} (${c.tipo})</option>`).join('');
+  const opts='<option value="">Seleccionar...</option>'+D.cerdas.map(c=><option value="${c.id}">${c.nom} (${c.tipo})</option>).join('');
   ['ev-animal','lec-madre'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=opts;});
   const mA=document.getElementById('med-animal');
-  if(mA)mA.innerHTML='<option value="todos">Todos</option>'+D.cerdas.map(c=>`<option value="${c.id}">${c.nom}</option>`).join('');
+  if(mA)mA.innerHTML='<option value="todos">Todos</option>'+D.cerdas.map(c=><option value="${c.id}">${c.nom}</option>).join('');
 }
 
 // ══ CERDA ══
 async function guardarCerda(){
   const nom=document.getElementById('c-nom').value.trim();
   if(!nom){alert('Escribe el nombre');return;}
-  const cerda={
-    id:Date.now(),nom,tipo:document.getElementById('c-tipo').value,
-    cub:document.getElementById('c-cub').value,
-    peso:parseFloat(document.getElementById('c-peso').value)||0,
-    pobj:parseFloat(document.getElementById('c-pobj').value)||0,
-    part:document.getElementById('c-part').value,
-    lech:parseInt(document.getElementById('c-lech').value)||0,
-    partos:parseInt(document.getElementById('c-partos').value)||0,
-    raza:document.getElementById('c-raza').value,
-    nota:document.getElementById('c-nota').value,
-    fecha:hoy()
-  };
+  const cerda={id:Date.now(),nom,tipo:document.getElementById('c-tipo').value,
+    cub:document.getElementById('c-cub').value,peso:parseFloat(document.getElementById('c-peso').value)||0,
+    pobj:parseFloat(document.getElementById('c-pobj').value)||0,part:document.getElementById('c-part').value,
+    lech:parseInt(document.getElementById('c-lech').value)||0,partos:parseInt(document.getElementById('c-partos').value)||0,
+    raza:document.getElementById('c-raza').value,nota:document.getElementById('c-nota').value,fecha:hoy()};
   D.cerdas.push(cerda);
   svLocal();closeMo('mo-cerda');renderCerdas();renderResumen();syncSelects();
-  await guardarEnSheets('cerdas', D.cerdas);
+  await guardarEnSheets('cerdas',D.cerdas);
   ['c-nom','c-cub','c-peso','c-pobj','c-part','c-lech','c-raza','c-nota'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('c-partos').value='0';
 }
 function renderCerdas(){
   const el=document.getElementById('lista-cerdas');
-  if(!D.cerdas.length){el.innerHTML='<div class="empty">Sin cerdas registradas.</div>';return;}
+  if(!D.cerdas.length){el.innerHTML='<div class="empty">Sin cerdas.</div>';return;}
   el.innerHTML=D.cerdas.map(c=>{
-    const chip=c.tipo==='prenada'?'<span class="chip chip-g">Preñada</span>':
-                c.tipo==='seba'?'<span class="chip chip-o">En seba</span>':
-                '<span class="chip chip-pk">Parida</span>';
+    const chip=c.tipo==='prenada'?'<span class="chip chip-g">Preñada</span>':c.tipo==='seba'?'<span class="chip chip-o">En seba</span>':'<span class="chip chip-pk">Parida</span>';
     let extra='';
-    if(c.tipo==='prenada'&&c.cub){
-      const d=diasDe(c.cub),r=114-d,p=Math.min(100,Math.round(d/114*100));
-      extra=`<div class="pb"><div class="pf" style="width:${p}%"></div></div>
-      <div class="pl ${r<=10?'pk':''}">${d} días gestación — ${r>0?r+' días para parto':'⚠️ PARTO'}</div>`;
-    }
-    if(c.tipo==='seba'&&c.peso&&c.pobj){
-      const p=Math.min(100,Math.round(c.peso/c.pobj*100));
-      extra=`<div class="pb"><div class="pf" style="width:${p}%;background:var(--o)"></div></div>
-      <div class="pl">${c.peso} kg / ${c.pobj} kg objetivo (${p}%)</div>`;
-    }
-    if(c.tipo==='parida'&&c.part){
-      const d=diasDe(c.part);
-      extra=`<div style="font-size:.72rem;color:var(--pk);margin-top:5px">Día ${d} de lactancia — ${c.lech||'?'} lechones actuales</div>`;
-    }
+    if(c.tipo==='prenada'&&c.cub){const d=diasDe(c.cub),r=114-d,p=Math.min(100,Math.round(d/114*100));
+      extra=<div class="pb"><div class="pf" style="width:${p}%"></div></div><div class="pl ${r<=10?'pk':''}">${d} días — ${r>0?r+' días para parto':'⚠️ PARTO'}</div>;}
+    if(c.tipo==='seba'&&c.peso&&c.pobj){const p=Math.min(100,Math.round(c.peso/c.pobj*100));
+      extra=<div class="pb"><div class="pf" style="width:${p}%;background:var(--o)"></div></div><div class="pl">${c.peso}/${c.pobj} kg (${p}%)</div>;}
+    if(c.tipo==='parida'&&c.part){const d=diasDe(c.part);
+      extra=<div style="font-size:.72rem;color:var(--pk);margin-top:5px">Día ${d} lactancia — ${c.lech||'?'} lechones</div>;}
     return `<div class="ac">
       <div class="at"><div class="an">🐷 ${c.nom}</div>${chip}</div>
-      <div class="am">${c.raza?'<span>🔬 '+c.raza+'</span>':''}<span>🐣 Partos: ${c.partos||0}</span>${c.cub&&c.tipo==='prenada'?'<span>📅 Cubrición: '+c.cub+'</span>':''}${c.part&&c.tipo==='parida'?'<span>📅 Parto: '+c.part+'</span>':''}</div>
+      <div class="am"><span>🐣 Partos: ${c.partos||0}</span>${c.raza?'<span>🔬 '+c.raza+'</span>':''}</div>
       ${extra}
       <div class="mb-row">
-        <button class="mb mb-o" onclick="cambiarTipo(${c.id})">Cambiar tipo</button>
+        <button class="mb mb-o" onclick="cambiarTipo(${c.id})">Tipo</button>
         <button class="mb mb-b" onclick="editarCerda(${c.id})">✏️ Editar</button>
-        <button class="mb mb-r" onclick="elimCerda(${c.id})">Eliminar</button>
-      </div>
-    </div>`;
+        <button class="mb mb-r" onclick="elimCerda(${c.id})">✕</button>
+      </div></div>`;
   }).join('');
 }
 function cambiarTipo(id){
+  const n=prompt('0=Preñada  1=En seba  2=Parida');
   const tipos=['prenada','seba','parida'];
-  const n=prompt('Cambiar tipo:\n0=Preñada  1=En seba  2=Parida');
-  if(n!==null&&tipos[+n]){
-    D.cerdas.find(c=>c.id===id).tipo=tipos[+n];
-    svLocal();renderCerdas();renderResumen();
-    guardarEnSheets('cerdas',D.cerdas);
-  }
+  if(n!==null&&tipos[+n]){D.cerdas.find(c=>c.id===id).tipo=tipos[+n];svLocal();renderCerdas();renderResumen();guardarEnSheets('cerdas',D.cerdas);}
 }
 function editarCerda(id){
   const c=D.cerdas.find(x=>x.id===id);if(!c)return;
-  const ops=['1 — Nombre (actual: '+c.nom+')','2 — Fecha cubrición (actual: '+(c.cub||'—')+')','3 — Fecha parto (actual: '+(c.part||'—')+')','4 — N° partos (actual: '+(c.partos||0)+')','5 — Lechones vivos (actual: '+(c.lech||0)+')','6 — Peso kg (actual: '+(c.peso||0)+')'];
-  const op=prompt('¿Qué corregir?\n\n'+ops.join('\n'));
+  const op=prompt('Corregir:\n1-Nombre\n2-Fecha cubrición\n3-Fecha parto\n4-N° partos\n5-Lechones vivos\n6-Peso kg');
   if(!op)return;
   if(op==='1'){const v=prompt('Nuevo nombre:');if(v)c.nom=v.trim();}
-  else if(op==='2'){const v=prompt('Fecha cubrición (AAAA-MM-DD):');if(v)c.cub=v;}
-  else if(op==='3'){const v=prompt('Fecha parto (AAAA-MM-DD):');if(v)c.part=v;}
-  else if(op==='4'){const v=prompt('N° de partos:');if(v!==null)c.partos=parseInt(v)||0;}
-  else if(op==='5'){const v=prompt('N° lechones vivos:');if(v!==null)c.lech=parseInt(v)||0;}
+  else if(op==='2'){const v=prompt('Fecha (AAAA-MM-DD):');if(v)c.cub=v;}
+  else if(op==='3'){const v=prompt('Fecha (AAAA-MM-DD):');if(v)c.part=v;}
+  else if(op==='4'){const v=prompt('N° partos:');if(v!==null)c.partos=parseInt(v)||0;}
+  else if(op==='5'){const v=prompt('Lechones vivos:');if(v!==null)c.lech=parseInt(v)||0;}
   else if(op==='6'){const v=prompt('Peso kg:');if(v!==null)c.peso=parseFloat(v)||0;}
-  svLocal();renderCerdas();renderResumen();
-  guardarEnSheets('cerdas',D.cerdas);
+  svLocal();renderCerdas();renderResumen();guardarEnSheets('cerdas',D.cerdas);
 }
 async function elimCerda(id){
-  if(confirm('¿Eliminar esta cerda?')){
-    D.cerdas=D.cerdas.filter(c=>c.id!==id);
-    svLocal();renderCerdas();renderResumen();syncSelects();
-    await guardarEnSheets('cerdas',D.cerdas);
-  }
+  if(confirm('¿Eliminar?')){D.cerdas=D.cerdas.filter(c=>c.id!==id);svLocal();renderCerdas();renderResumen();syncSelects();await guardarEnSheets('cerdas',D.cerdas);}
 }
 
 // ══ LECHONES ══
@@ -670,11 +592,12 @@ async function guardarLechon(){
   const madre=D.cerdas.find(c=>c.id==mid);
   const vivos=parseInt(document.getElementById('lec-viv').value)||0;
   const fecha=document.getElementById('lec-f').value||hoy();
-  D.camadas.push({id:Date.now(),madre_id:mid,madre_nom:madre?.nom||'Desconocida',fecha,vivos,muertos:parseInt(document.getElementById('lec-mue').value)||0,estado:document.getElementById('lec-est').value,nota:document.getElementById('lec-nota').value});
+  D.camadas.push({id:Date.now(),madre_id:mid,madre_nom:madre?.nom||'?',fecha,vivos,
+    muertos:parseInt(document.getElementById('lec-mue').value)||0,
+    estado:document.getElementById('lec-est').value,nota:document.getElementById('lec-nota').value});
   if(madre){madre.tipo='parida';madre.part=fecha;madre.lech=vivos;madre.partos=(madre.partos||0)+1;}
   svLocal();closeMo('mo-lechon');renderLechones();renderResumen();renderCerdas();syncSelects();
-  await guardarEnSheets('camadas',D.camadas);
-  await guardarEnSheets('cerdas',D.cerdas);
+  await guardarEnSheets('camadas',D.camadas);await guardarEnSheets('cerdas',D.cerdas);
   ['lec-viv','lec-mue','lec-nota'].forEach(id=>document.getElementById(id).value='');
 }
 function renderLechones(){
@@ -686,56 +609,48 @@ function renderLechones(){
   document.getElementById('l-ceb').textContent=ceb;
   document.getElementById('l-tot').textContent=lac+des+ceb;
   const el=document.getElementById('lista-lechones');
-  if(!D.camadas.length){el.innerHTML='<div class="empty">Sin camadas registradas.</div>';return;}
+  if(!D.camadas.length){el.innerHTML='<div class="empty">Sin camadas.</div>';return;}
   const eL={lactancia:'En lactancia',destete:'En destete',ceba:'En ceba'};
   const eC={lactancia:'chip-pk',destete:'chip-y',ceba:'chip-o'};
-  el.innerHTML=D.camadas.map(cam=>`
-    <div class="ac">
-      <div class="at"><div class="an">🐽 Camada de ${cam.madre_nom}</div><span class="chip ${eC[cam.estado]}">${eL[cam.estado]}</span></div>
-      <div class="am"><span>📅 ${cam.fecha}</span><span>✅ ${cam.vivos} vivos</span>${cam.muertos?'<span>❌ '+cam.muertos+' muertos</span>':''}</div>
-      ${cam.nota?'<div style="font-size:.72rem;color:var(--mu);margin-top:5px">'+cam.nota+'</div>':''}
-      <div class="mb-row">
-        <button class="mb mb-y" onclick="cambiarEstLec(${cam.id})">Cambiar etapa</button>
-        <button class="mb mb-b" onclick="ajustarVivos(${cam.id})">Ajustar vivos</button>
-        <button class="mb mb-r" onclick="elimCamada(${cam.id})">Eliminar</button>
-      </div>
-    </div>`).join('');
+  el.innerHTML=D.camadas.map(cam=>`<div class="ac">
+    <div class="at"><div class="an">🐽 ${cam.madre_nom}</div><span class="chip ${eC[cam.estado]}">${eL[cam.estado]}</span></div>
+    <div class="am"><span>📅 ${cam.fecha}</span><span>✅ ${cam.vivos} vivos</span>${cam.muertos?'<span>❌ '+cam.muertos+'</span>':''}</div>
+    <div class="mb-row">
+      <button class="mb mb-y" onclick="cambiarEstLec(${cam.id})">Etapa</button>
+      <button class="mb mb-b" onclick="ajustarVivos(${cam.id})">Ajustar</button>
+      <button class="mb mb-r" onclick="elimCamada(${cam.id})">✕</button>
+    </div></div>`).join('');
 }
 function cambiarEstLec(id){
-  const estados=['lactancia','destete','ceba'];
-  const n=prompt('Etapa:\n0=Lactancia  1=Destete  2=Ceba');
-  if(n!==null&&estados[+n]){D.camadas.find(c=>c.id===id).estado=estados[+n];svLocal();renderLechones();renderResumen();guardarEnSheets('camadas',D.camadas);}
+  const n=prompt('0=Lactancia  1=Destete  2=Ceba');
+  const e=['lactancia','destete','ceba'];
+  if(n!==null&&e[+n]){D.camadas.find(c=>c.id===id).estado=e[+n];svLocal();renderLechones();renderResumen();guardarEnSheets('camadas',D.camadas);}
 }
 function ajustarVivos(id){
-  const n=prompt('¿Cuántos lechones vivos quedan?');
+  const n=prompt('¿Cuántos vivos quedan?');
   if(n!==null){D.camadas.find(c=>c.id===id).vivos=parseInt(n)||0;svLocal();renderLechones();renderResumen();guardarEnSheets('camadas',D.camadas);}
 }
 async function elimCamada(id){
-  if(confirm('¿Eliminar esta camada?')){
-    D.camadas=D.camadas.filter(c=>c.id!==id);
-    svLocal();renderLechones();renderResumen();
-    await guardarEnSheets('camadas',D.camadas);
-  }
+  if(confirm('¿Eliminar?')){D.camadas=D.camadas.filter(c=>c.id!==id);svLocal();renderLechones();renderResumen();await guardarEnSheets('camadas',D.camadas);}
 }
 
 // ══ ALIMENTO ══
 function saveRac(){
-  D.rac={p1:+document.getElementById('ra-p1').value||2,p2:+document.getElementById('ra-p2').value||2.5,pa:+document.getElementById('ra-pa').value||5.5,se:+document.getElementById('ra-se').value||3.5,le:+document.getElementById('ra-le').value||0.5,pr:+document.getElementById('ra-pr').value||2000};
+  D.rac={p1:+document.getElementById('ra-p1').value||2,p2:+document.getElementById('ra-p2').value||2.5,
+    pa:+document.getElementById('ra-pa').value||5.5,se:+document.getElementById('ra-se').value||3.5,
+    le:+document.getElementById('ra-le').value||0.5,pr:+document.getElementById('ra-pr').value||2000};
   svLocal();renderResumen();guardarEnSheets('rac',D.rac);
 }
 async function comprarAli(){
   const kg=+document.getElementById('ali-k').value,cos=+document.getElementById('ali-c').value;
   if(!kg||!cos){alert('Ingresa kg y costo');return;}
   D.compras.unshift({id:Date.now(),fecha:document.getElementById('ali-f').value||hoy(),kg,cos,nota:document.getElementById('ali-n').value});
-  svLocal();renderAlimento();renderResumen();
-  await guardarEnSheets('compras',D.compras);
+  svLocal();renderAlimento();renderResumen();await guardarEnSheets('compras',D.compras);
   ['ali-k','ali-c','ali-n'].forEach(id=>document.getElementById(id).value='');
 }
 function renderAlimento(){
   ['ra-p1','ra-p2','ra-pa','ra-se','ra-le','ra-pr'].forEach((id,i)=>{
-    const keys=['p1','p2','pa','se','le','pr'];
-    document.getElementById(id).value=D.rac[keys[i]];
-  });
+    const k=['p1','p2','pa','se','le','pr'];document.getElementById(id).value=D.rac[k[i]];});
   const el=document.getElementById('hist-ali');
   if(!D.compras.length){el.innerHTML='<div class="empty">Sin registros</div>';return;}
   el.innerHTML=D.compras.map(a=>`<div class="al-row">
@@ -746,15 +661,14 @@ function renderAlimento(){
 
 // ══ MEDICAMENTOS ══
 async function guardarMed(){
-  const nom=document.getElementById('med-nom').value.trim();
-  if(!nom){alert('Escribe el medicamento');return;}
+  const nom=document.getElementById('med-nom').value.trim();if(!nom){alert('Escribe el medicamento');return;}
   const cos=+document.getElementById('med-cos').value||0;
   const aId=document.getElementById('med-animal').value;
-  const aNom=aId==='todos'?'Todos':D.cerdas.find(c=>c.id==aId)?.nom||'';
-  D.meds.unshift({id:Date.now(),animal:aNom,nom,dos:document.getElementById('med-dos').value,fecha:document.getElementById('med-f').value||hoy(),cos,nota:document.getElementById('med-nota').value});
+  const aN=aId==='todos'?'Todos':D.cerdas.find(c=>c.id==aId)?.nom||'';
+  D.meds.unshift({id:Date.now(),animal:aN,nom,dos:document.getElementById('med-dos').value,
+    fecha:document.getElementById('med-f').value||hoy(),cos,nota:document.getElementById('med-nota').value});
   if(cos>0)D.movs.unshift({id:Date.now(),tipo:'gasto',fecha:hoy(),desc:'Medicamento: '+nom,val:cos});
-  svLocal();renderMeds();renderResumen();
-  await guardarEnSheets('meds',D.meds);
+  svLocal();renderMeds();renderResumen();await guardarEnSheets('meds',D.meds);
   ['med-nom','med-dos','med-cos','med-nota'].forEach(id=>document.getElementById(id).value='');
 }
 function renderMeds(){
@@ -762,15 +676,14 @@ function renderMeds(){
   if(!D.meds.length){el.innerHTML='<div class="empty">Sin registros</div>';return;}
   el.innerHTML=D.meds.map(m=>`<div class="med-i">
     <div><strong>${m.nom}</strong> — ${m.animal}</div>
-    <div>${m.dos||''} ${m.cos?'| '+fmt(m.cos):''}</div>
-    <div class="med-m">${m.fecha} ${m.nota?'· '+m.nota:''}</div>
+    <div>${m.dos||''}${m.cos?' | '+fmt(m.cos):''}</div>
+    <div style="font-size:.68rem;color:var(--mu)">${m.fecha}${m.nota?' · '+m.nota:''}</div>
   </div>`).join('');
 }
 
 // ══ EVENTOS ══
 async function guardarEv(){
-  const aId=document.getElementById('ev-animal').value;
-  if(!aId){alert('Selecciona un animal');return;}
+  const aId=document.getElementById('ev-animal').value;if(!aId){alert('Selecciona animal');return;}
   const animal=D.cerdas.find(c=>c.id==aId);
   const tipo=document.getElementById('ev-tipo').value;
   const fecha=document.getElementById('ev-fecha').value||hoy();
@@ -779,16 +692,15 @@ async function guardarEv(){
   if(tipo==='cubricion'&&animal){animal.tipo='prenada';animal.cub=fecha;}
   if(tipo==='parto'&&animal){
     animal.tipo='parida';animal.part=fecha;animal.partos=(animal.partos||0)+1;
-    const n=prompt('¿Cuántos lechones nacieron vivos?');
+    const n=prompt('¿Lechones nacidos vivos?');
     if(n){animal.lech=+n;D.camadas.push({id:Date.now(),madre_id:aId,madre_nom:animal.nom,fecha,vivos:+n,muertos:0,estado:'lactancia',nota:det});}
     await guardarEnSheets('camadas',D.camadas);
   }
-  if(tipo==='destete'&&animal){animal.tipo='prenada';}
+  if(tipo==='destete'&&animal)animal.tipo='prenada';
   if(tipo==='venta'&&val>0)D.movs.unshift({id:Date.now(),tipo:'ingreso',fecha,desc:'Venta — '+animal?.nom,val});
   D.eventos.unshift({id:Date.now(),aId,aNom:animal?.nom||'',tipo,fecha,det,val});
   svLocal();renderEventos();renderCerdas();renderLechones();renderResumen();syncSelects();
-  await guardarEnSheets('eventos',D.eventos);
-  await guardarEnSheets('cerdas',D.cerdas);
+  await guardarEnSheets('eventos',D.eventos);await guardarEnSheets('cerdas',D.cerdas);
   document.getElementById('ev-det').value='';document.getElementById('ev-valor').value='';
 }
 function renderEventos(){
@@ -798,7 +710,7 @@ function renderEventos(){
   const ico={cubricion:'💕',parto:'🐣',destete:'🍼',venta:'💵',medicamento:'💉',peso:'⚖️',muerte:'💀',otro:'📝'};
   el.innerHTML=D.eventos.map(e=>`<div class="ri ev-${e.tipo}">
     <div style="display:flex;justify-content:space-between">
-      <div><strong>${ico[e.tipo]||'📝'} ${e.tipo.toUpperCase()}</strong> — ${e.aNom}</div>
+      <strong>${ico[e.tipo]||'📝'} ${e.tipo.toUpperCase()} — ${e.aNom}</strong>
       <button class="mb mb-r" onclick="elimEvento(${e.id})">✕</button>
     </div>
     <div>${e.det||'—'}${e.val?' | '+fmt(e.val):''}</div>
@@ -806,11 +718,7 @@ function renderEventos(){
   </div>`).join('');
 }
 async function elimEvento(id){
-  if(confirm('¿Eliminar este evento?')){
-    D.eventos=D.eventos.filter(e=>e.id!==id);
-    svLocal();renderEventos();
-    await guardarEnSheets('eventos',D.eventos);
-  }
+  if(confirm('¿Eliminar?')){D.eventos=D.eventos.filter(e=>e.id!==id);svLocal();renderEventos();await guardarEnSheets('eventos',D.eventos);}
 }
 
 // ══ CUENTAS ══
@@ -818,9 +726,9 @@ async function guardarMov(){
   const desc=document.getElementById('mov-desc').value.trim();
   const val=+document.getElementById('mov-val').value;
   if(!desc||!val){alert('Completa descripción y valor');return;}
-  D.movs.unshift({id:Date.now(),tipo:document.getElementById('mov-tipo').value,fecha:document.getElementById('mov-f').value||hoy(),desc,val});
-  svLocal();renderCuentas();renderResumen();
-  await guardarEnSheets('movs',D.movs);
+  D.movs.unshift({id:Date.now(),tipo:document.getElementById('mov-tipo').value,
+    fecha:document.getElementById('mov-f').value||hoy(),desc,val});
+  svLocal();renderCuentas();renderResumen();await guardarEnSheets('movs',D.movs);
   document.getElementById('mov-desc').value='';document.getElementById('mov-val').value='';
 }
 function renderCuentas(){
@@ -858,15 +766,15 @@ function renderResumen(){
   document.getElementById('r-al').textContent=kl.toFixed(1)+' kg';
   document.getElementById('r-at').textContent=(kp+kpa+ks+kl).toFixed(1)+' kg';
   const az=document.getElementById('zona-alertas');
-  const alertas=D.cerdas.filter(c=>c.tipo==='prenada'&&c.cub&&(114-diasDe(c.cub))<=10);
-  az.innerHTML=alertas.map(c=>{const r2=114-diasDe(c.cub);
-    return `<div class="alrt alrt-r">⚠️ <div><strong>${c.nom}</strong> — ${r2<=0?'¡PARTO HOY O PASADO!':'Parto en '+r2+' días'}</div></div>`;
+  az.innerHTML=D.cerdas.filter(c=>c.tipo==='prenada'&&c.cub&&(114-diasDe(c.cub))<=10).map(c=>{
+    const r2=114-diasDe(c.cub);
+    return <div class="alrt alrt-r">⚠️ <div><strong>${c.nom}</strong> — ${r2<=0?'¡PARTO!':'Parto en '+r2+' días'}</div></div>;
   }).join('');
   const mes=hoy().slice(0,7);
-  const cali=D.compras.filter(a=>a.fecha.startsWith(mes)).reduce((s,a)=>s+a.cos,0);
+  const cali=D.compras.filter(a=>a.fecha&&a.fecha.startsWith(mes)).reduce((s,a)=>s+a.cos,0);
   const cmed=D.meds.filter(m=>m.fecha&&m.fecha.startsWith(mes)).reduce((s,m)=>s+(m.cos||0),0);
-  const cgas=D.movs.filter(m=>m.tipo==='gasto'&&m.fecha.startsWith(mes)).reduce((s,m)=>s+m.val,0);
-  const ing=D.movs.filter(m=>m.tipo==='ingreso'&&m.fecha.startsWith(mes)).reduce((s,m)=>s+m.val,0);
+  const cgas=D.movs.filter(m=>m.tipo==='gasto'&&m.fecha&&m.fecha.startsWith(mes)).reduce((s,m)=>s+m.val,0);
+  const ing=D.movs.filter(m=>m.tipo==='ingreso'&&m.fecha&&m.fecha.startsWith(mes)).reduce((s,m)=>s+m.val,0);
   const util=ing-cali-cmed-cgas;
   document.getElementById('r-cali').textContent=fmt(cali);
   document.getElementById('r-cmed').textContent=fmt(cmed);
@@ -878,29 +786,23 @@ function renderResumen(){
 
 // ══ CONFIG ══
 function renderConfig(){
-  document.getElementById('cfg-url-show').textContent=SCRIPT_URL||'No configurado aún — siga los pasos de abajo';
-  document.getElementById('cfg-url-input').value=SCRIPT_URL||'';
+  const el=document.getElementById('cfg-url-show');
+  if(el)el.textContent=SCRIPT_URL;
+  const inp=document.getElementById('cfg-url-input');
+  if(inp)inp.value=SCRIPT_URL;
 }
 function guardarScriptUrl(){
   const url=document.getElementById('cfg-url-input').value.trim();
-  if(!url){alert('Pega la URL del script');return;}
-  SCRIPT_URL=url;
-  localStorage.setItem('granja_script_url',url);
-  renderConfig();
-  alert('✅ URL guardada. Ahora toque Recargar datos.');
-  cargarDatos();
+  if(!url){alert('Pega la URL');return;}
+  SCRIPT_URL=url;localStorage.setItem('granja_script_url',url);
+  renderConfig();cargarDatos();
 }
 
-// ══ RENDER TODO ══
-function renderTodo(){
-  renderResumen();renderCerdas();renderLechones();renderAlimento();renderMeds();renderEventos();renderCuentas();syncSelects();
-}
-
-// ══ EXPORT / IMPORT ══
+// ══ EXPORT/IMPORT ══
 function exportarDatos(){
   const blob=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download='granja-backup-'+hoy()+'.json';a.click();URL.revokeObjectURL(url);
+  const a=document.createElement('a');a.href=url;a.download='granja-'+hoy()+'.json';a.click();URL.revokeObjectURL(url);
 }
 function importarDatos(){
   const input=document.createElement('input');input.type='file';input.accept='.json';
@@ -908,28 +810,27 @@ function importarDatos(){
     const file=e.target.files[0];if(!file)return;
     const reader=new FileReader();
     reader.onload=ev=>{
-      try{
-        const datos=JSON.parse(ev.target.result);
+      try{const datos=JSON.parse(ev.target.result);
         if(!datos.cerdas){alert('Archivo no válido');return;}
-        if(confirm('¿Importar? Reemplaza todo lo actual.')){D=datos;svLocal();renderTodo();alert('✅ Datos importados');}
-      }catch(e){alert('Error al leer el archivo');}
-    };
-    reader.readAsText(file);
-  };
-  input.click();
+        if(confirm('¿Importar? Reemplaza todo lo actual.')){D=datos;svLocal();renderTodo();alert('✅ Importado');}
+      }catch(e){alert('Error al leer');}
+    };reader.readAsText(file);
+  };input.click();
+}
+
+// ══ RENDER TODO ══
+function renderTodo(){
+  renderResumen();renderCerdas();renderLechones();renderAlimento();renderMeds();renderEventos();renderCuentas();syncSelects();
 }
 
 // ══ INIT ══
-document.getElementById('hoy-badge')&&(document.getElementById('hoy-badge').textContent=new Date().toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}));
 ['ali-f','ev-fecha','mov-f','med-f','lec-f','c-cub','c-part'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=hoy();});
+document.getElementById('hoy-badge')&&(document.getElementById('hoy-badge').textContent=new Date().toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}));
 renderTodo();
 
-// Cargar datos de Sheets al abrir (si hay script configurado)
-if(SCRIPT_URL){
-  cargarDatos();
-} else {
-  setSyncStatus('err','Configure el script en ⚙️ Config');
-}
+// El script en Google necesita manejar JSONP - actualizar Apps Script
+// Por ahora actualizar el script en Google Sheets para soportar callback
+cargarDatos();
 </script>
 </body>
 </html>
