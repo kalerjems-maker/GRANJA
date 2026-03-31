@@ -88,9 +88,31 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
 .empty{text-align:center;color:var(--mu);padding:26px 0;font-size:.8rem}
 .med-i{background:var(--surf);border-left:3px solid var(--bl);border-radius:0 7px 7px 0;padding:8px 10px;margin-bottom:6px;font-size:.78rem}
 .med-m{color:var(--mu);font-size:.68rem;margin-top:2px}
+/* Modal diálogo personalizado */
+#dlg-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:20px}
+#dlg-overlay.on{display:flex}
+#dlg-box{background:var(--card);border:1px solid var(--brd2);border-radius:13px;padding:20px;width:100%;max-width:340px}
+#dlg-title{font-family:'Fraunces',serif;font-size:1rem;margin-bottom:12px;color:var(--tx)}
+#dlg-input{width:100%;background:var(--surf);border:1px solid var(--brd);color:var(--tx);padding:9px 11px;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.9rem;margin-bottom:12px}
+.dlg-btns{display:flex;gap:8px}
+.dlg-btns button{flex:1;padding:10px;border-radius:8px;border:none;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer}
+#dlg-ok{background:var(--g);color:#0e1a10}
+#dlg-cancel{background:transparent;border:1px solid var(--mu)!important;color:var(--mu)}
 </style>
 </head>
 <body>
+<!-- Modal diálogo personalizado (reemplaza prompt/confirm) -->
+<div id="dlg-overlay">
+  <div id="dlg-box">
+    <div id="dlg-title"></div>
+    <input id="dlg-input" type="text" style="display:none">
+    <div class="dlg-btns">
+      <button id="dlg-cancel" onclick="dlgCancel()">Cancelar</button>
+      <button id="dlg-ok" onclick="dlgOk()">Aceptar</button>
+    </div>
+  </div>
+</div>
+
 <header>
   <div class="logo">🐷 <div><span>Granja</span><span class="logo-s">Control de producción</span></div></div>
   <div style="display:flex;align-items:center;gap:8px">
@@ -176,14 +198,10 @@ input:focus,select:focus{outline:none;border-color:var(--g)}
     <div class="ch">📦 Registrar compra</div>
     <div class="r2">
       <div><label>Fecha</label><input type="date" id="ali-f"></div>
-      <div><label>N° de bultos (40 kg c/u)</label><input type="number" id="ali-bultos" placeholder="Ej: 5" onchange="calcularKgBultos()"></div>
-    </div>
-    <div class="r2">
-      <div><label>Kg totales (auto)</label><input type="number" id="ali-k" placeholder="200"></div>
-      <div><label>Costo por bulto ($)</label><input type="number" id="ali-cpb" placeholder="Ej: 50000" onchange="calcularCostoBultos()"></div>
+      <div><label>Kg comprados</label><input type="number" id="ali-k" placeholder="50"></div>
     </div>
     <label>Costo total ($)</label><input type="number" id="ali-c" placeholder="100000">
-    <label>Proveedor / tipo</label><input type="text" id="ali-n" placeholder="Solla, Italcol, Alimento finca...">
+    <label>Proveedor / tipo</label><input type="text" id="ali-n" placeholder="Solla, Italcol, Maíz...">
     <button class="btn btn-g" onclick="comprarAli()">Guardar compra</button>
   </div>
   <div class="card">
@@ -485,6 +503,39 @@ document.getElementById('hoy-badge').textContent = new Date().toLocaleDateString
   const el=document.getElementById(id);if(el)el.value=hoy();
 });
 
+// ══ MODAL PERSONALIZADO (reemplaza prompt/confirm) ══
+let dlgResolve=null;
+function dlgPrompt(title,inputType='text',placeholder=''){
+  return new Promise(res=>{
+    dlgResolve=res;
+    document.getElementById('dlg-title').textContent=title;
+    const inp=document.getElementById('dlg-input');
+    inp.style.display='';inp.type=inputType;inp.placeholder=placeholder||'';inp.value='';
+    document.getElementById('dlg-overlay').classList.add('on');
+    setTimeout(()=>inp.focus(),100);
+  });
+}
+function dlgConfirm(title){
+  return new Promise(res=>{
+    dlgResolve=res;
+    document.getElementById('dlg-title').textContent=title;
+    document.getElementById('dlg-input').style.display='none';
+    document.getElementById('dlg-overlay').classList.add('on');
+  });
+}
+function dlgOk(){
+  document.getElementById('dlg-overlay').classList.remove('on');
+  const inp=document.getElementById('dlg-input');
+  const val=inp.style.display==='none'?true:inp.value;
+  if(dlgResolve){dlgResolve(val);dlgResolve=null;}
+}
+function dlgCancel(){
+  document.getElementById('dlg-overlay').classList.remove('on');
+  if(dlgResolve){dlgResolve(null);dlgResolve=null;}
+}
+// Enter en input del diálogo = Aceptar
+document.getElementById('dlg-input').addEventListener('keydown',e=>{if(e.key==='Enter')dlgOk();});
+
 // ══ NAVEGACIÓN ══
 function go(tab,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
@@ -577,32 +628,27 @@ function renderCerdas(){
   }).join('');
 }
 
-function cambiarTipo(id){
+async function cambiarTipo(id){
   const tipos=['prenada','seba','parida'];
-  const n=prompt('Cambiar tipo:\n0=Preñada  1=En seba  2=Parida');
+  const n=await dlgPrompt('Cambiar tipo:\n0=Preñada  1=En seba  2=Parida','number','0, 1 o 2');
   if(n!==null&&tipos[+n]){D.cerdas.find(c=>c.id===id).tipo=tipos[+n];sv();renderCerdas();renderResumen();}
 }
-function elimCerda(id){if(confirm('¿Eliminar esta cerda?')){D.cerdas=D.cerdas.filter(c=>c.id!==id);sv();renderCerdas();renderResumen();syncSelects();}}
+async function elimCerda(id){
+  const ok=await dlgConfirm('¿Eliminar esta cerda?');
+  if(ok){D.cerdas=D.cerdas.filter(c=>c.id!==id);sv();renderCerdas();renderResumen();syncSelects();}
+}
 
-function editarCerda(id){
+async function editarCerda(id){
   const c=D.cerdas.find(x=>x.id===id);
   if(!c)return;
-  const ops=[
-    '1 — Cambiar nombre (actual: '+c.nom+')',
-    '2 — Corregir fecha de cubrición (actual: '+(c.cub||'sin fecha')+')',
-    '3 — Corregir fecha de parto (actual: '+(c.part||'sin fecha')+')',
-    '4 — Corregir N° de partos (actual: '+(c.partos||0)+')',
-    '5 — Corregir lechones vivos actuales (actual: '+(c.lech||0)+')',
-    '6 — Corregir peso actual kg (actual: '+(c.peso||0)+')',
-  ];
-  const op=prompt('¿Qué quiere corregir?\n\n'+ops.join('\n'));
+  const op=await dlgPrompt('¿Qué corregir?\n1=Nombre  2=Fecha cubrición\n3=Fecha parto  4=N°partos\n5=Lechones vivos  6=Peso kg','number','1-6');
   if(!op)return;
-  if(op==='1'){const v=prompt('Nuevo nombre:');if(v)c.nom=v.trim();}
-  else if(op==='2'){const v=prompt('Nueva fecha de cubrición (AAAA-MM-DD):');if(v)c.cub=v;}
-  else if(op==='3'){const v=prompt('Nueva fecha de parto (AAAA-MM-DD):');if(v)c.part=v;}
-  else if(op==='4'){const v=prompt('N° de partos correcto:');if(v!==null)c.partos=parseInt(v)||0;}
-  else if(op==='5'){const v=prompt('N° de lechones vivos actuales:');if(v!==null)c.lech=parseInt(v)||0;}
-  else if(op==='6'){const v=prompt('Peso actual en kg:');if(v!==null)c.peso=parseFloat(v)||0;}
+  if(op==='1'){const v=await dlgPrompt('Nuevo nombre (actual: '+c.nom+'):','text');if(v)c.nom=v.trim();}
+  else if(op==='2'){const v=await dlgPrompt('Nueva fecha cubrición (AAAA-MM-DD):','date');if(v)c.cub=v;}
+  else if(op==='3'){const v=await dlgPrompt('Nueva fecha parto (AAAA-MM-DD):','date');if(v)c.part=v;}
+  else if(op==='4'){const v=await dlgPrompt('N° de partos (actual: '+(c.partos||0)+'):','number');if(v!==null)c.partos=parseInt(v)||0;}
+  else if(op==='5'){const v=await dlgPrompt('Lechones vivos actuales (actual: '+(c.lech||0)+'):','number');if(v!==null)c.lech=parseInt(v)||0;}
+  else if(op==='6'){const v=await dlgPrompt('Peso actual en kg (actual: '+(c.peso||0)+'):','number');if(v!==null)c.peso=parseFloat(v)||0;}
   sv();renderCerdas();renderResumen();
 }
 
@@ -658,16 +704,19 @@ function renderLechones(){
     </div>`).join('');
 }
 
-function cambiarEstLec(id){
+async function cambiarEstLec(id){
   const estados=['lactancia','destete','ceba'];
-  const n=prompt('Etapa:\n0=Lactancia  1=Destete  2=Ceba');
+  const n=await dlgPrompt('Cambiar etapa:\n0=Lactancia  1=Destete  2=Ceba','number','0, 1 o 2');
   if(n!==null&&estados[+n]){D.camadas.find(c=>c.id===id).estado=estados[+n];sv();renderLechones();renderResumen();}
 }
-function ajustarVivos(id){
-  const n=prompt('¿Cuántos lechones vivos quedan?');
+async function ajustarVivos(id){
+  const n=await dlgPrompt('¿Cuántos lechones vivos quedan?','number');
   if(n!==null){D.camadas.find(c=>c.id===id).vivos=parseInt(n)||0;sv();renderLechones();renderResumen();}
 }
-function elimCamada(id){if(confirm('¿Eliminar esta camada?')){D.camadas=D.camadas.filter(c=>c.id!==id);sv();renderLechones();renderResumen();}}
+async function elimCamada(id){
+  const ok=await dlgConfirm('¿Eliminar esta camada?');
+  if(ok){D.camadas=D.camadas.filter(c=>c.id!==id);sv();renderLechones();renderResumen();}
+}
 
 // ══ ALIMENTO ══
 function saveRac(){
@@ -676,23 +725,12 @@ function saveRac(){
     le:+document.getElementById('ra-le').value||0.5,pr:+document.getElementById('ra-pr').value||2000};
   sv();renderResumen();
 }
-function calcularKgBultos(){
-  const bultos=+document.getElementById('ali-bultos').value||0;
-  if(bultos>0) document.getElementById('ali-k').value=bultos*40;
-  calcularCostoBultos();
-}
-function calcularCostoBultos(){
-  const bultos=+document.getElementById('ali-bultos').value||0;
-  const cpb=+document.getElementById('ali-cpb').value||0;
-  if(bultos>0&&cpb>0) document.getElementById('ali-c').value=bultos*cpb;
-}
 function comprarAli(){
   const kg=+document.getElementById('ali-k').value,cos=+document.getElementById('ali-c').value;
-  const bultos=+document.getElementById('ali-bultos').value||0;
-  if(!kg||!cos){alert('Ingresa bultos/kg y costo');return;}
-  D.compras.unshift({id:Date.now(),fecha:document.getElementById('ali-f').value||hoy(),kg,cos,bultos,nota:document.getElementById('ali-n').value});
+  if(!kg||!cos){alert('Ingresa kg y costo');return;}
+  D.compras.unshift({id:Date.now(),fecha:document.getElementById('ali-f').value||hoy(),kg,cos,nota:document.getElementById('ali-n').value});
   sv();renderAlimento();renderResumen();
-  ['ali-k','ali-c','ali-n','ali-bultos','ali-cpb'].forEach(id=>document.getElementById(id).value='');
+  ['ali-k','ali-c','ali-n'].forEach(id=>document.getElementById(id).value='');
 }
 function renderAlimento(){
   ['ra-p1','ra-p2','ra-pa','ra-se','ra-le','ra-pr'].forEach((id,i)=>{
@@ -703,7 +741,7 @@ function renderAlimento(){
   if(!D.compras.length){el.innerHTML='<div class="empty">Sin registros</div>';return;}
   el.innerHTML=D.compras.map(a=>`<div class="al-row">
     <div><div>${a.fecha}</div><div style="font-size:.7rem;color:var(--mu)">${a.nota||''}</div></div>
-    <div style="text-align:right"><div class="g">${a.bultos?a.bultos+' bultos · ':''} ${a.kg} kg</div><div class="r" style="font-size:.78rem">${fmt(a.cos)}</div></div>
+    <div style="text-align:right"><div class="g">${a.kg} kg</div><div class="r" style="font-size:.78rem">${fmt(a.cos)}</div></div>
   </div>`).join('');
 }
 
@@ -731,7 +769,7 @@ function renderMeds(){
 }
 
 // ══ EVENTOS ══
-function guardarEv(){
+async function guardarEv(){
   const aId=document.getElementById('ev-animal').value;
   if(!aId){alert('Selecciona un animal');return;}
   const animal=D.cerdas.find(c=>c.id==aId);
@@ -743,7 +781,7 @@ function guardarEv(){
   if(tipo==='parto'&&animal){
     animal.tipo='parida';animal.part=fecha;
     animal.partos=(animal.partos||0)+1;
-    const n=prompt('¿Cuántos lechones nacieron vivos?');
+    const n=await dlgPrompt('¿Cuántos lechones nacieron vivos?','number');
     if(n){animal.lech=+n;
       D.camadas.push({id:Date.now(),madre_id:aId,madre_nom:animal.nom,fecha,vivos:+n,muertos:0,estado:'lactancia',nota:det});
     }
@@ -769,8 +807,9 @@ function renderEventos(){
   </div>`).join('');
 }
 
-function elimEvento(id){
-  if(confirm('¿Eliminar este evento?')){
+async function elimEvento(id){
+  const ok=await dlgConfirm('¿Eliminar este evento?');
+  if(ok){
     D.eventos=D.eventos.filter(e=>e.id!==id);
     sv();renderEventos();
   }
@@ -868,31 +907,41 @@ function jsonpCall(params, callback){
   document.body.appendChild(script);
 }
 
-function syncManual(){
+async function syncManual(){
   setSyncDot('var(--y)');
-  jsonpCall({accion:'subirTodo',datos:D}, function(res){
-    if(res&&res.ok){
-      setSyncDot('var(--g)');
-      alert('✅ Sincronizado con Google Sheets');
-    } else {
-      setSyncDot('var(--r)');
-      alert('❌ Sin conexión. Datos guardados localmente.');
-    }
+  // Subir datos locales
+  return new Promise(resolve=>{
+    jsonpCall({accion:'subirTodo',datos:D}, res=>{
+      if(res&&res.ok){
+        setSyncDot('var(--g)');
+        alert('✅ Datos sincronizados con Google Sheets');
+      } else {
+        setSyncDot('var(--r)');
+        alert('❌ Sin conexión. Los datos se guardan localmente.');
+      }
+      resolve();
+    });
   });
 }
 
-function cargarDeSheets(){
-  jsonpCall({accion:'leer'}, function(res){
-    if(res&&res.datos&&Object.keys(res.datos).length>0){
-      D={...D,...res.datos};sv();
-      renderResumen();renderCerdas();renderLechones();renderAlimento();renderMeds();renderEventos();renderCuentas();syncSelects();
-      setSyncDot('var(--g)');
-    }
+async function cargarDeSheets(){
+  setSyncDot('var(--y)');
+  return new Promise(resolve=>{
+    jsonpCall({accion:'leer'}, res=>{
+      if(res&&res.datos&&Object.keys(res.datos).length>0){
+        D={...D,...res.datos};sv();
+        renderResumen();renderCerdas();renderLechones();renderAlimento();renderMeds();renderEventos();renderCuentas();syncSelects();
+        setSyncDot('var(--g)');
+      } else {
+        setSyncDot('var(--mu)');
+      }
+      resolve();
+    });
   });
 }
 
-// Sync silencioso al abrir - NO bloquea nada
-setTimeout(function(){ try{ cargarDeSheets(); }catch(e){} }, 3000);
+// Al abrir, intentar cargar datos del servidor en segundo plano
+setTimeout(()=>{ try{ cargarDeSheets(); }catch(e){} }, 2000);
 
 // ══ EXPORTAR / IMPORTAR ══
 function exportarDatos(){
@@ -913,11 +962,12 @@ function importarDatos(){
     const file=e.target.files[0];
     if(!file)return;
     const reader=new FileReader();
-    reader.onload=ev=>{
+    reader.onload=async ev=>{
       try{
         const datos=JSON.parse(ev.target.result);
         if(!datos.cerdas){alert('Archivo no válido');return;}
-        if(confirm('¿Importar datos? Esto reemplaza todo lo actual.')){
+        const ok=await dlgConfirm('¿Importar datos? Esto reemplaza todo lo actual.');
+        if(ok){
           D=datos;sv();
           renderResumen();renderCerdas();renderLechones();renderAlimento();renderMeds();renderEventos();renderCuentas();syncSelects();
           alert('✅ Datos importados correctamente');
